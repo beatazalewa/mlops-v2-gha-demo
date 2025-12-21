@@ -46,7 +46,7 @@ jobs:
         max_instances: 4
         cluster_tier: low_priority
         resource_group: ${{ needs.get-config.outputs.resource_group }}
-        workspace_name: ${{ needs.get-config.outputs.aml_workspace }}     
+        workspace_name: ${{ needs.get-config.outputs.aml_workspace }}  
       secrets:
             AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
             AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}

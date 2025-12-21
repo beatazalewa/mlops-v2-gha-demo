@@ -6,12 +6,12 @@ env:
     config_env: 'none'
 jobs:
   get-config:
-      uses: Azure/mlops-templates/.github/workflows/read-yaml.yml@Dec2025patch
+      uses: Azure/mlops-templates/.github/workflows/read-yaml.yml@main
       with:
         file_name: config-infra-prod.yml
   test-terraform-state-deployment:
     needs: get-config
-    uses: Azure/mlops-templates/.github/workflows/tf-gha-install-terraform.yml@Dec2025patch
+    uses: Azure/mlops-templates/.github/workflows/tf-gha-install-terraform.yml@main
     with:
       TFAction: 'apply'
       dply_environment: ${{ needs.set-env-branch.outputs.config-file }} 
@@ -31,9 +31,11 @@ jobs:
       terraform_plan_location: ${{ needs.get-config.outputs.location }}
       terraform_plan_vnet: "TBD" # TBD
     secrets:
-      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      azure_creds: ${{ secrets.AZURE_CREDENTIALS }}
+      clientId: ${{ secrets.ARM_CLIENT_ID }}
+      clientSecret: ${{ secrets.ARM_CLIENT_SECRET }}
+      subscriptionId: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      tenantId: ${{ secrets.ARM_TENANT_ID }}
 
   deploy-azureml-resources:
     runs-on: ubuntu-latest
