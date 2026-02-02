@@ -10,7 +10,7 @@ resource "azurerm_machine_learning_workspace" "mlw" {
   sku_name = "Basic"
 
   identity {
-    type = "UserAssigned"
+    type = "SystemAssigned"
   }
 
   tags = var.tags
