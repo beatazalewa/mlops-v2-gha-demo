@@ -47,7 +47,6 @@ jobs:
         cluster_tier: low_priority
         resource_group: ${{ needs.get-config.outputs.resource_group }}
         workspace_name: ${{ needs.get-config.outputs.aml_workspace }}
-        user_assigned_identity: ''  # Add this line to explicitly pass empty string  
       secrets:
             AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
             AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
