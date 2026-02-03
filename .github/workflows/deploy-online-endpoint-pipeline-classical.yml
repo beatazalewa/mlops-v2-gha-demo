@@ -2,11 +2,17 @@ name: deploy-online-endpoint-pipeline
 
 on: 
   workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+  
 jobs:
   get-config:
       uses: Azure/mlops-templates/.github/workflows/read-yaml.yml@main
       with:
         file_name: config-infra-prod.yml
+
   create-endpoint:
       needs: get-config
       uses: Azure/mlops-templates/.github/workflows/create-endpoint.yml@Dec2025patch
