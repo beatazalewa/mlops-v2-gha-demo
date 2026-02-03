@@ -41,7 +41,7 @@ jobs:
       uses: Azure/mlops-templates/.github/workflows/create-compute.yml@Dec2025patch
       with:
         cluster_name: cpu-cluster
-        size: Standard_DS3_v2
+        size: Standard_DS2_v2
         min_instances: 0
         max_instances: 4
         cluster_tier: low_priority
